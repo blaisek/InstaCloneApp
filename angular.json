@@ -25,10 +25,45 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              {
+                "input": "node_modules/@ionic/angular/css/normalize.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/structure.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/typography.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/core.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/padding.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/float-elements.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/text-alignment.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/text-transformation.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/flex-utils.css"
+              },
+              {
+                "input": "src/theme/variables.css"
+              }
             ],
             "scripts": []
           },
@@ -121,8 +156,36 @@
               "devServerTarget": "InstaCloneApp:serve:production"
             }
           }
+        },
+        "ionic-cordova-serve": {
+          "builder": "@ionic/angular-toolkit:cordova-serve",
+          "options": {
+            "cordovaBuildTarget": "InstaCloneApp:ionic-cordova-build",
+            "devServerTarget": "InstaCloneApp:serve"
+          },
+          "configurations": {
+            "production": {
+              "cordovaBuildTarget": "InstaCloneApp:ionic-cordova-build:production",
+              "devServerTarget": "InstaCloneApp:serve:production"
+            }
+          }
+        },
+        "ionic-cordova-build": {
+          "builder": "@ionic/angular-toolkit:cordova-build",
+          "options": {
+            "browserTarget": "InstaCloneApp:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "InstaCloneApp:build:production"
+            }
+          }
         }
       }
-    }},
-  "defaultProject": "InstaCloneApp"
+    }
+  },
+  "defaultProject": "InstaCloneApp",
+  "cli": {
+    "analytics": "41ce75fa-09d1-4a0d-a1aa-5bbf8c5ca15d"
+  }
 }
