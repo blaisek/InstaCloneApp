@@ -1,1 +1,19 @@
-<p>auth works!</p>
+<ion-content>
+
+  <form [formGroup]="profileForm">
+
+    <ion-item>
+      <ion-label>UserName</ion-label>
+      <ion-input type="text" formControlName="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>PassWord</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+
+
+
+  </form>
+
+
+</ion-content>
