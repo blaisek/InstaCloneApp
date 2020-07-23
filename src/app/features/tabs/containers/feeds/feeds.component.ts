@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { APIService } from 'src/app/core/services/api/api.service';
 import { Observable } from 'rxjs';
-import { promise } from 'protractor';
 
 @Component({
   selector: 'app-feeds',

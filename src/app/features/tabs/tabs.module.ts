@@ -16,4 +16,4 @@ import { TabsComponent } from './containers/tabs/tabs.component';
     IonicModule.forRoot()
   ]
 })
-export class TabsModule { }
+export class TabsModule {}
