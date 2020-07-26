@@ -13,7 +13,9 @@ import { TabsComponent } from './containers/tabs/tabs.component';
   imports: [
     CommonModule,
     TabsRoutingModule,
-    IonicModule.forRoot()
+    IonicModule.forRoot(
+      {mode: 'ios'}
+    )
   ]
 })
 export class TabsModule {}
