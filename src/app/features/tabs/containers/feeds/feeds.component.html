@@ -37,7 +37,7 @@
             <ion-grid class="ion-no-padding">
               <ion-row class="ion-no-padding">
                 <ion-col class="ion-no-padding" size="6">
-                  <ion-icon class="icon-padding" name="heart-outline"></ion-icon>
+                  <ion-icon (click)="action($event.target,'like')" class="icon-padding" name="heart-outline"></ion-icon>
                   <ion-icon class="icon-padding" name="chatbubble-outline"></ion-icon>
                   <ion-icon class="icon-padding" name="paper-plane-outline"></ion-icon>
                 </ion-col>

@@ -10,12 +10,13 @@ import { map } from 'rxjs/operators';
 })
 export class ItemComponent implements OnInit {
 
-  data$: Observable<any>;
+  item$: Observable<any>;
 
   constructor( private _route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.data$ = this._route.data.pipe(
+    // prend les data dans le service item-service resolver
+    this.item$ = this._route.data.pipe(
       map( resp => resp?.item || {})
     );
   }

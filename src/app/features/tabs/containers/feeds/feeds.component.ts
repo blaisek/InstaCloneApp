@@ -3,6 +3,7 @@ import { IonInfiniteScroll } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import {first, map } from 'rxjs/operators';
+import { APIService } from 'src/app/core/services/api/api.service';
 
 @Component({
   selector: 'app-feeds',
@@ -17,7 +18,7 @@ export class FeedsComponent implements OnInit {
   public max: number = 3;
   public increment: number = 3;
 
-  constructor(private _route: ActivatedRoute) { }
+  constructor(private _route: ActivatedRoute, private _api: APIService) { }
 
   async ngOnInit(): Promise<void> {
     this.feeds$ = this._route.data.pipe(
@@ -31,6 +32,14 @@ export class FeedsComponent implements OnInit {
       this.max = this.max + this.increment;
     }
     event.target.complete();
+  }
+
+  action( $event, type: string) {
+    switch (true) {
+      case type === 'like':
+        this._api.like($event);
+        break;
+    }
   }
 
 }

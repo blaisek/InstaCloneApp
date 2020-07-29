@@ -11,22 +11,26 @@ export class ItemResolverService implements Resolve<any> {
   constructor( private _api: APIService) { }
 
 
-  async resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  async resolve(route: ActivatedRouteSnapshot) {
     const {id = null } = route.params;
     if (!id) {
       return null;
     }
     const feeds = await this._api.feeds$.pipe(first()).toPromise().catch(e => e);
-    const existing = feeds.find(el => el.id === id);
-    if (!existing) {
-      const item = this._api.getUserById(id);
+    if ( !feeds) {
+      const item = this._api.getItemById(id);
+      console.log('item', item);
       if (!item) {
         return null;
       }
       return item;
     }
+    const existing = feeds.find(el => el.id === id);
+    console.log('existing', existing);
+    if (!existing) {
+      return null;
+    }
     return existing;
-
   }
 
 

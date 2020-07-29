@@ -25,15 +25,30 @@ export class APIService {
 
   }
 
-  async getUserById(id){
+  async getUserById(id: string){
     const url = environment.apiUrl + '/users/' + id;
     const resp = await this._http.get(url).toPromise().catch(err => err);
     return resp;
   }
 
+  async getItemById(id: string) {
+    const url = environment.apiUrl + '/posts/' + id;
+    const response = await this._http.get(url).toPromise().catch(err => err);
+    return response;
+  }
 
+  like(item) {
 
+   if ( item.name !== 'heart'){
+      item.name = 'heart';
+      item.style.color = 'red';
+   } else {
 
+    item.name = 'heart-outline';
+    item.style.color = 'black';
+   }
+
+  }
 
 }
 
