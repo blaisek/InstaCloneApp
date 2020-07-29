@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'auth',//'/tabs/feeds',
+    redirectTo: '/tabs/feeds',
     pathMatch: 'full'
   }
 ];

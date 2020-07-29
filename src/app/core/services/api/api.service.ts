@@ -25,6 +25,12 @@ export class APIService {
 
   }
 
+  async getUserById(id){
+    const url = environment.apiUrl + '/users/' + id;
+    const resp = await this._http.get(url).toPromise().catch(err => err);
+    return resp;
+  }
+
 
 
 

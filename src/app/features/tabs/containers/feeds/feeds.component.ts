@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewEncapsulation,ViewChild } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { IonInfiniteScroll } from '@ionic/angular';
-import { APIService } from 'src/app/core/services/api/api.service';
 import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import {first, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-feeds',
@@ -13,32 +14,23 @@ export class FeedsComponent implements OnInit {
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
   public feeds$: Observable<any[]>;
+  public max: number = 3;
+  public increment: number = 3;
 
-  constructor(private api: APIService) { }
+  constructor(private _route: ActivatedRoute) { }
 
-  ngOnInit(): void {
-    this.loadData();
+  async ngOnInit(): Promise<void> {
+    this.feeds$ = this._route.data.pipe(
+      first(),
+      map((data: {feeds?: any[]}) => data?.feeds)
+    );
   }
 
-  async loadData(): Promise<void> {
-
-  await this.api.getData();
-  this.feeds$ = this.api.feeds$;
-    console.log(this.feeds$);
-
-  }
-
-  loadScrollData(event) {
-    setTimeout(() => {
-      console.log('Done');
-      event.target.complete();
-
-      // App logic to determine if all data is loaded
-      // and disable the infinite scroll
-      // if (this.feeds$.length == 1000) {
-      //   event.target.disabled = true;
-      // }
-    }, 500);
+  loadScrollData(event, totalItems: number) {
+    if (totalItems > this.max){
+      this.max = this.max + this.increment;
+    }
+    event.target.complete();
   }
 
 }

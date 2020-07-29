@@ -6,10 +6,11 @@ import { FeedsComponent } from './containers/feeds/feeds.component';
 import { SearchComponent } from './containers/search/search.component';
 import { ProfilsComponent } from './containers/profils/profils.component';
 import { TabsComponent } from './containers/tabs/tabs.component';
+import { ItemComponent } from './containers/item/item.component';
 
 
 @NgModule({
-  declarations: [FeedsComponent, SearchComponent, ProfilsComponent, TabsComponent],
+  declarations: [FeedsComponent, SearchComponent, ProfilsComponent, TabsComponent, ItemComponent],
   imports: [
     CommonModule,
     TabsRoutingModule,
