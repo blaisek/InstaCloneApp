@@ -1,0 +1,43 @@
+<ion-card class="ion-no-margin ion-margin-vertical">
+  <ion-card-header >
+    <ion-grid class="ion-no-padding">
+      <ion-row class="ion-no-padding" [routerLink]="'../profil/'+post?.user?.id">
+        <ion-col class="ion-no-padding" size="2">
+          <ion-avatar>
+            <ion-img [src]="post?.user?.profile_image?.small"></ion-img>
+          </ion-avatar>
+        </ion-col>
+        <ion-col class="ion-no-padding">
+          <ion-text>
+            <p>{{post?.user?.username}}</p>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-header>
+  <ion-img [src]="post?.urls?.regular"></ion-img>
+  <ion-card-content >
+    <ion-grid class="ion-no-padding">
+      <ion-row class="ion-no-padding">
+        <ion-col class="ion-no-padding" size="6">
+          <ion-icon (click)="action($event,'like',post)" class="icon-padding" name="heart-outline"></ion-icon>
+          <ion-icon class="icon-padding" name="chatbubble-outline"></ion-icon>
+          <ion-icon class="icon-padding" name="paper-plane-outline"></ion-icon>
+        </ion-col>
+        <ion-col class="ion-no-padding" size="6">
+          <ion-icon class="ion-float-right" name="bookmark-outline"></ion-icon>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-text>
+            <p>
+              <b>Like {{post?.likes}}</b>
+            </p>
+            <p>{{post?.created_at}}</p>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>

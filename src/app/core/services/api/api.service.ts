@@ -37,18 +37,42 @@ export class APIService {
     return response;
   }
 
-  like(item) {
+  like(item, data) {
 
-   if ( item.name !== 'heart'){
-      item.name = 'heart';
-      item.style.color = 'red';
+    if ( item.target.name !== 'heart'){
+      item.target.name = 'heart';
+      item.target.style.color = 'red';
+      this.likedItems(item.target.name, data);
    } else {
 
-    item.name = 'heart-outline';
-    item.style.color = 'black';
+    item.target.name = 'heart-outline';
+    item.target.style.color = 'black';
+    this.likedItems(item.target.name, data);
    }
 
   }
+
+  async likedItems(iconName, id) {
+    const url = environment.apiUrl + '/posts/' + id;
+    const myItem = this._feeds$.value.find(item => item.id === id);
+
+    if (iconName === 'heart') {
+        // liked_by_user a true
+        myItem.liked_by_user = true;
+      }
+    if (iconName === 'heart-outline') {
+        // liked_by_user a false
+        myItem.liked_by_user = false;
+      }
+    const response = await this._http.put(url, myItem).toPromise().catch(err => err);
+    console.log(response);
+
+    this._feeds$.next([
+          ...this._feeds$.value.filter(item => item.id !== id),
+          myItem
+        ]);
+  }
+
 
 }
 

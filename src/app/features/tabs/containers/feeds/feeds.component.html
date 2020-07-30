@@ -12,52 +12,13 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-grid class="ion-no-padding" *ngIf="feeds$|async as feeds">
+  <ion-grid class="ion-no-padding"  *ngIf="feeds$|async as feeds">
     <ion-row class="ion-no-padding">
       <ion-col class="ion-no-padding" size-xs="12" size-md="8">
-        <ion-card class="ion-no-margin ion-margin-vertical" *ngFor="let item of feeds.slice(0,max)">
-          <ion-card-header >
-            <ion-grid class="ion-no-padding">
-              <ion-row class="ion-no-padding" [routerLink]="'../profil/'+item?.user?.id">
-                <ion-col class="ion-no-padding" size="2">
-                  <ion-avatar>
-                    <ion-img [src]="item?.user?.profile_image?.small"></ion-img>
-                  </ion-avatar>
-                </ion-col>
-                <ion-col class="ion-no-padding">
-                  <ion-text>
-                    <p>{{item?.user?.username}}</p>
-                  </ion-text>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-card-header>
-          <ion-img [src]="item?.urls?.regular"></ion-img>
-          <ion-card-content >
-            <ion-grid class="ion-no-padding">
-              <ion-row class="ion-no-padding">
-                <ion-col class="ion-no-padding" size="6">
-                  <ion-icon (click)="action($event.target,'like')" class="icon-padding" name="heart-outline"></ion-icon>
-                  <ion-icon class="icon-padding" name="chatbubble-outline"></ion-icon>
-                  <ion-icon class="icon-padding" name="paper-plane-outline"></ion-icon>
-                </ion-col>
-                <ion-col class="ion-no-padding" size="6">
-                  <ion-icon class="ion-float-right" name="bookmark-outline"></ion-icon>
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col>
-                  <ion-text>
-                    <p>
-                      <b>Like {{item?.likes}}</b>
-                    </p>
-                    <p>{{item?.created_at}}</p>
-                  </ion-text>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-card-content>
-        </ion-card>
+        <app-post
+        [post]="item"
+        (actionEvent)="action()"
+        *ngFor="let item of feeds.slice(0, max); trackBy: trackByFn"></app-post>
       </ion-col>
       <ion-col class="plt-desktop" size-xs="12" size-md="4"> <div style="position: fixed;">Profil </div></ion-col>
     </ion-row>

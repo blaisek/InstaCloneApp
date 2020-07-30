@@ -5,9 +5,9 @@ import {FeedsComponent} from './containers/feeds/feeds.component';
 import {ProfilsComponent} from './containers/profils/profils.component';
 import {SearchComponent} from './containers/search/search.component';
 import { FeedsResolverService } from 'src/app/core/services/feeds-resolver/feeds-resolver.service';
-import { ItemResolverService } from './servives/item-resolver/item-resolver.service';
+import { ItemResolverService } from './services/item-resolver/item-resolver.service';
 import { ItemComponent } from './containers/item/item.component';
-import { UserResolverService } from './servives/user-resolver/user-resolver.service';
+import { UserResolverService } from './services/user-resolver/user-resolver.service';
 
 const routes: Routes = [
   {

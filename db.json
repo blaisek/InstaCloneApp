@@ -25,7 +25,7 @@
       },
       "categories": [],
       "likes": 185,
-      "liked_by_user": false,
+      "liked_by_user": true,
       "current_user_collections": [],
       "sponsorship": {
         "impression_urls": [
@@ -123,7 +123,7 @@
       },
       "categories": [],
       "likes": 23,
-      "liked_by_user": false,
+      "liked_by_user": true,
       "current_user_collections": [],
       "sponsorship": null,
       "user": {
@@ -183,7 +183,7 @@
       },
       "categories": [],
       "likes": 15,
-      "liked_by_user": false,
+      "liked_by_user": true,
       "current_user_collections": [],
       "sponsorship": null,
       "user": {
@@ -363,7 +363,7 @@
       },
       "categories": [],
       "likes": 32,
-      "liked_by_user": false,
+      "liked_by_user": true,
       "current_user_collections": [],
       "sponsorship": null,
       "user": {

@@ -10,8 +10,7 @@ export class UserResolverService implements Resolve <any>{
   constructor(private _api:APIService) { }
 
 
-  async resolve(route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot) {
+  async resolve(route: ActivatedRouteSnapshot) {
 
       const {id} = route.params;
       if (!id) {
