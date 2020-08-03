@@ -1,1 +1,44 @@
-<p>search works!</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button></ion-back-button>
+    <ion-title>InstaClone</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid *ngIf="search$|async as items">
+    <ion-row>
+      <ion-col size="6">
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-no-padding">
+            <ion-col size="12" class="ion-padding-bottom">
+              <div [ngStyle]="{
+                    'background-image': 'url(' + items[0]?.urls?.thumb + ')'
+                  }" [routerLink]="items[0].id" class="thumb"></div>
+              <!-- <ion-img [routerLink]="items[0].id" [src]="items[0]?.urls?.thumb"></ion-img> -->
+            </ion-col>
+            <ion-col size="12">
+              <div [ngStyle]="{
+                    'background-image': 'url(' + items[1]?.urls?.thumb + ')'
+                  }" [routerLink]="items[1].id" class="thumb"></div>
+              <!-- <ion-img [routerLink]="items[1].id" [src]="items[1]?.urls?.thumb"></ion-img> -->
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+      <ion-col size="6">
+        <div [ngStyle]="{
+            'background-image': 'url(' + items[2]?.urls?.thumb + ')'
+          }" [routerLink]="items[2].id" class="thumb"></div>
+        <!-- <ion-img [routerLink]="items[2].id" [src]="items[2]?.urls?.thumb"></ion-img> -->
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4" *ngFor="let item of items.slice(3, items.lenght)">
+        <div [ngStyle]="{
+          'background-image': 'url(' + items?.urls?.thumb + ')'
+        }" [routerLink]="item.id" class="thumb"></div>
+        <!-- <ion-img [routerLink]="item.id" [src]="item?.urls?.thumb"></ion-img> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
