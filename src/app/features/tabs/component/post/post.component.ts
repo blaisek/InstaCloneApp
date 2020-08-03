@@ -12,18 +12,19 @@ export class PostComponent implements OnInit {
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
   @Input() post: any;
-  @Output() actionEvent: EventEmitter<any> = new EventEmitter(null);
-  constructor(private _api: APIService) { }
+  @Output() actionEvent = new EventEmitter <any>();
+  constructor() { }
 
   ngOnInit(): void {
   }
 
   action( $event, type: string, data) {
-    switch (true) {
-      case type === 'like':
-        this._api.like($event, data.id);
-        break;
-    }
+
+    this.actionEvent.emit({
+      type,
+      $event,
+      data
+    });
   }
 
 

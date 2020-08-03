@@ -18,7 +18,7 @@ export class ProfilsComponent implements OnInit {
 
   ngOnInit(): void {
     this.user$ = this._route.data.pipe(
-      map((respons: {user?: any}) => respons?.user)
+      map((respons: {curentUser?: any}) => respons?.curentUser)
     );
   }
 

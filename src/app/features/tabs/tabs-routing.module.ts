@@ -8,6 +8,8 @@ import { FeedsResolverService } from 'src/app/core/services/feeds-resolver/feeds
 import { ItemResolverService } from './services/item-resolver/item-resolver.service';
 import { ItemComponent } from './containers/item/item.component';
 import { UserResolverService } from './services/user-resolver/user-resolver.service';
+import { AuthGuardService } from 'src/app/core/services/authGuard/auth-guard.service';
+import { CurrentUserResolverService } from './services/currentUserResolver/current-user-resolver.service';
 
 const routes: Routes = [
   {
@@ -42,20 +44,24 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            component: ProfilsComponent
+            component: ProfilsComponent,
+            canActivate: [AuthGuardService],
+            resolve: {
+              curentUser: CurrentUserResolverService
+            }
           },
           {
             path: ':id',
             component: ProfilsComponent,
             resolve: {
-              user: UserResolverService
+              curentUser: UserResolverService
             }
           }
         ]
       },
       {
         path: '',
-        redirectTo: 'feed',
+        redirectTo: 'feeds',
         pathMatch: 'full'
       }
     ]

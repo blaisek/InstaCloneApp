@@ -1,5 +1,6 @@
 <ion-content>
-
-  <app-post></app-post>
-
+  <ion-grid class="ion-no-padding" *ngIf="item$|async as items">
+  <app-post
+    [post]="items"></app-post>
+  </ion-grid>
 </ion-content>

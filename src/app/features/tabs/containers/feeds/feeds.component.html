@@ -17,10 +17,14 @@
       <ion-col class="ion-no-padding" size-xs="12" size-md="8">
         <app-post
         [post]="item"
-        (actionEvent)="action()"
-        *ngFor="let item of feeds.slice(0, max); trackBy: trackByFn"></app-post>
+        (actionEvent)="action($event)"
+        *ngFor="let item of feeds.slice(0, max)"></app-post>
       </ion-col>
-      <ion-col class="plt-desktop" size-xs="12" size-md="4"> <div style="position: fixed;">Profil </div></ion-col>
+      <ion-col class="plt-desktop" size-xs="12" size-md="4">
+        <div style="position: fixed;">
+          authentification
+        </div>
+    </ion-col>
     </ion-row>
   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadScrollData($event,feeds.length)">
     <ion-infinite-scroll-content

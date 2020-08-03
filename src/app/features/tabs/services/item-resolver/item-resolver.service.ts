@@ -26,10 +26,11 @@ export class ItemResolverService implements Resolve<any> {
       return item;
     }
     const existing = feeds.find(el => el.id === id);
-    console.log('existing', existing);
+
     if (!existing) {
       return null;
     }
+    console.log('existing', existing);
     return existing;
   }
 

@@ -39,15 +39,15 @@ export class APIService {
 
   like(item, data) {
 
-    if ( item.target.name !== 'heart'){
-      item.target.name = 'heart';
-      item.target.style.color = 'red';
-      this.likedItems(item.target.name, data);
+    if ( item.$event.target.name !== 'heart'){
+      item.$event.target.name = 'heart';
+      item.$event.target.style.color = 'red';
+      this.likedItems(item.$event.target.name, data);
    } else {
 
-    item.target.name = 'heart-outline';
-    item.target.style.color = 'black';
-    this.likedItems(item.target.name, data);
+    item.$event.target.name = 'heart-outline';
+    item.$event.target.style.color = 'black';
+    this.likedItems(item.$event.target.name, data);
    }
 
   }
