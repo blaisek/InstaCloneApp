@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { FeedsResolverService } from './core/services/feeds-resolver/feeds-resolver.service';
+
 
 const routes: Routes = [
   {
     path: 'tabs',
+    resolve: {
+      feeds: FeedsResolverService
+    },
     loadChildren: () => import('./features/tabs/tabs.module').then(m => m.TabsModule)
   },
   {
@@ -18,7 +23,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    paramsInheritanceStrategy: 'always'
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

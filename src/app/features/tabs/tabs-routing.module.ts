@@ -20,8 +20,8 @@ const routes: Routes = [
         path: 'feeds',
         component: FeedsComponent,
         resolve: {
-          feeds: FeedsResolverService
-        },
+          curentUser: CurrentUserResolverService
+        }
       },
       {
         path: 'search',
