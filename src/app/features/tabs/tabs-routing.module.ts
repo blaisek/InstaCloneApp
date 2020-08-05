@@ -35,6 +35,7 @@ const routes: Routes = [
             component: ItemComponent,
             resolve: {
               item: ItemResolverService,
+              curentUser: CurrentUserResolverService
             }
           }
         ]

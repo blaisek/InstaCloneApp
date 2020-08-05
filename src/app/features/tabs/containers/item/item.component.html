@@ -11,6 +11,7 @@
 <ion-content>
   <div class="ion-no-padding" *ngIf="item$|async as items">
   <app-post
+    (actionEvent)="action($event)"
     [post]="items"></app-post>
   </div>
 </ion-content>
