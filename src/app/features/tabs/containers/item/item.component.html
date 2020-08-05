@@ -1,6 +1,16 @@
+<ion-header>
+<ion-toolbar>
+  <ion-title>
+    InstaClone
+  </ion-title>
+  <ion-buttons slot="start">
+    <ion-back-button></ion-back-button>
+  </ion-buttons>
+</ion-toolbar>
+</ion-header>
 <ion-content>
-  <ion-grid class="ion-no-padding" *ngIf="item$|async as items">
+  <div class="ion-no-padding" *ngIf="item$|async as items">
   <app-post
     [post]="items"></app-post>
-  </ion-grid>
+  </div>
 </ion-content>
