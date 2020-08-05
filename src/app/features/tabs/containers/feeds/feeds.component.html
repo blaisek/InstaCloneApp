@@ -1,12 +1,12 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      InstaCloneApp
+      InstaClone
     </ion-title>
-    <ion-buttons slot="end">
-      <ion-icon  name="camera-outline"></ion-icon>
+    <ion-buttons (click) ="takePicture()" slot="start">
+      <ion-icon name="camera"></ion-icon>
     </ion-buttons>
-    <ion-buttons slot="start">
+    <ion-buttons slot="end">
       <ion-icon  name="paper-plane-outline"></ion-icon>
     </ion-buttons>
   </ion-toolbar>

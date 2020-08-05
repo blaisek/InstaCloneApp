@@ -17,7 +17,7 @@ export class ItemComponent implements OnInit {
 
   constructor( private _route: ActivatedRoute,
                private _alert: ErrorService,
-               private _api: APIService) { }
+               private _api: APIService) {}
 
   ngOnInit(): void {
     // prend les data dans le service item-service resolver
@@ -35,7 +35,7 @@ export class ItemComponent implements OnInit {
     switch (true) {
       case $event.type === 'like':
         if (!currentUser || !currentUser?.id) {
-          console.log('err', currentUser);
+          console.log('currentUser err');
           this._alert.display('You must be logged to like this picture',
           {
             buttons: [{ text: 'ok'}]
@@ -43,8 +43,6 @@ export class ItemComponent implements OnInit {
 
           return;
         } else {
-          console.log('else', currentUser);
-
           await this._api.like($event, $event.data.id);
         }
         break;

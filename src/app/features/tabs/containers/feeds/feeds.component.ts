@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import {first, map } from 'rxjs/operators';
 import { APIService } from 'src/app/core/services/api/api.service';
 import { ErrorService } from 'src/app/core/services/error/error.service';
+import { CameraService } from 'src/app/core/services/camera/camera.service';
 
 @Component({
   selector: 'app-feeds',
@@ -19,7 +20,11 @@ export class FeedsComponent implements OnInit {
   public currentUser$: Observable<any>;
 
 
-  constructor(private _route: ActivatedRoute, private _api:APIService, private _alert: ErrorService) { }
+  constructor(private _route: ActivatedRoute,
+              private _api:APIService,
+              private _alert: ErrorService,
+              private _camera: CameraService
+      ) { }
 
   async ngOnInit(): Promise<void> {
     this.feeds$ = this._route.data.pipe(
@@ -44,21 +49,31 @@ export class FeedsComponent implements OnInit {
     switch (true) {
       case $event.type === 'like':
         if (!currentUser || !currentUser?.id) {
-          console.log('err', currentUser);
           this._alert.display('You must be logged to like this picture',
           {
             buttons: [{ text: 'ok'}]
           });
-
           return;
         } else {
-          console.log('else', currentUser);
-
           await this._api.like($event, $event.data.id);
         }
         break;
         default:
          break;
+    }
+  }
+
+  async takePicture() {
+    const currentUser = await this.currentUser$.pipe(first()).toPromise().catch(err => err);
+    if (!currentUser || !currentUser?.id){
+      this._alert.display('You must be logged to take a picture',
+          {
+            buttons: [{ text: 'ok'}]
+          });
+      return;
+    }else{
+      const {base64String = null} = await this._camera.takePicture().catch(err => err);
+      console.log(base64String);
     }
   }
 
