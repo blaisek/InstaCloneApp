@@ -13,7 +13,7 @@ import { APIService } from 'src/app/core/services/api/api.service';
 export class ItemComponent implements OnInit {
 
   item$: Observable<any>;
-  currentUser$: Observable<any>;
+  curentUser$: Observable<any>;
 
   constructor( private _route: ActivatedRoute,
                private _alert: ErrorService,
@@ -24,14 +24,14 @@ export class ItemComponent implements OnInit {
     this.item$ = this._route.data.pipe(
       map( resp => resp?.item || {})
     );
-    this.currentUser$ = this._route.data.pipe(
-      map( (data: {currentUser?: any}) => data?.currentUser)
+    this.curentUser$ = this._route.data.pipe(
+      map( (data: {curentUser?: any}) => data?.curentUser)
     );
   }
 
   async action($event)
   {
-    const currentUser = await this.currentUser$.pipe(first()).toPromise().catch(err => err);
+    const currentUser = await this.curentUser$.pipe(first()).toPromise().catch(err => err);
     switch (true) {
       case $event.type === 'like':
         if (!currentUser || !currentUser?.id) {
