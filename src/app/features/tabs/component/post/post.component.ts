@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewEncapsulation, Input, ViewChild, Output, EventEmitter } from '@angular/core';
-import { APIService } from 'src/app/core/services/api/api.service';
 import { IonInfiniteScroll } from '@ionic/angular';
 
 @Component({

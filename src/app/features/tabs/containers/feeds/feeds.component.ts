@@ -76,7 +76,7 @@ export class FeedsComponent implements OnInit {
       console.log(base64String);
     }
   }
-
+  //voir docs track by
   trackByFn(index, item) {
     return index; // or item.id
   }

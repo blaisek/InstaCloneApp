@@ -1,7 +1,7 @@
 <ion-card class="ion-no-margin ion-margin-vertical">
   <ion-card-header >
     <ion-grid class="ion-no-padding">
-      <ion-row class="ion-no-padding" [routerLink]="'../profil/'+post?.user?.id">
+      <ion-row class="ion-no-padding" [routerLink]="['../profil/'+post?.user?.id]">
         <ion-col class="ion-no-padding" size="2">
           <ion-avatar>
             <ion-img [src]="post?.user?.profile_image?.small"></ion-img>
@@ -15,7 +15,7 @@
       </ion-row>
     </ion-grid>
   </ion-card-header>
-  <ion-img [src]="post?.urls?.regular"></ion-img>
+  <ion-img [routerLink]="'../search/'+post?.id" [src]="post?.urls?.regular"></ion-img>
   <ion-card-content >
     <ion-grid class="ion-no-padding">
       <ion-row class="ion-no-padding">
