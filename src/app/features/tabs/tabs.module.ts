@@ -8,10 +8,11 @@ import { ProfilsComponent } from './containers/profils/profils.component';
 import { TabsComponent } from './containers/tabs/tabs.component';
 import { ItemComponent } from './containers/item/item.component';
 import { PostComponent } from './component/post/post.component';
+import { MomentPipe } from './pipes/moment.pipe';
 
 
 @NgModule({
-  declarations: [FeedsComponent, SearchComponent, ProfilsComponent, TabsComponent, ItemComponent, PostComponent],
+  declarations: [FeedsComponent, SearchComponent, ProfilsComponent, TabsComponent, ItemComponent, PostComponent, MomentPipe],
   imports: [
     CommonModule,
     TabsRoutingModule,
