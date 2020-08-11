@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable} from 'rxjs';
 import { map, first } from 'rxjs/operators';
@@ -8,7 +8,8 @@ import { APIService } from 'src/app/core/services/api/api.service';
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
-  styleUrls: ['./item.component.scss']
+  styleUrls: ['./item.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ItemComponent implements OnInit {
 
@@ -25,7 +26,7 @@ export class ItemComponent implements OnInit {
       map( resp => resp?.item || {})
     );
     this.curentUser$ = this._route.data.pipe(
-      map( (data: {curentUser?: any}) => data?.curentUser)
+      map( (data: {currentUser?: any}) => data?.currentUser)
     );
   }
 

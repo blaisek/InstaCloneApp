@@ -65,7 +65,7 @@ export class APIService {
         myItem.liked_by_user = false;
       }
     const response = await this._http.put(url, myItem).toPromise().catch(err => err);
-    console.log(response);
+    //console.log(response);
 
     this._feeds$.next([
           ...this._feeds$.value.filter(item => item.id !== id),

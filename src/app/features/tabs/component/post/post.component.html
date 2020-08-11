@@ -1,4 +1,4 @@
-<ion-card class="ion-no-margin ion-margin-vertical">
+<ion-card class="ion-no-margin ion-margin-vertical ion-margin-left">
   <ion-card-header >
     <ion-grid class="ion-no-padding">
       <ion-row class="ion-no-padding" [routerLink]="['../profil/'+post?.user?.id]">
@@ -15,7 +15,7 @@
       </ion-row>
     </ion-grid>
   </ion-card-header>
-  <ion-img [routerLink]="'../search/'+post?.id" [src]="post?.urls?.regular"></ion-img>
+  <ion-img [src]="post?.urls?.regular"></ion-img>
   <ion-card-content >
     <ion-grid class="ion-no-padding">
       <ion-row class="ion-no-padding">

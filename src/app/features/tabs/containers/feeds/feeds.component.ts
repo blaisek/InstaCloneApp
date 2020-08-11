@@ -5,6 +5,7 @@ import {first, map } from 'rxjs/operators';
 import { APIService } from 'src/app/core/services/api/api.service';
 import { ErrorService } from 'src/app/core/services/error/error.service';
 import { CameraService } from 'src/app/core/services/camera/camera.service';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 
 @Component({
   selector: 'app-feeds',
@@ -23,7 +24,8 @@ export class FeedsComponent implements OnInit {
   constructor(private _route: ActivatedRoute,
               private _api:APIService,
               private _alert: ErrorService,
-              private _camera: CameraService
+              private _camera: CameraService,
+              private _auth: AuthService
       ) { }
 
   async ngOnInit(): Promise<void> {
@@ -32,8 +34,10 @@ export class FeedsComponent implements OnInit {
     );
 
     this.currentUser$ = this._route.data.pipe(
-      map((data: {curentUser?: any}) => data?.curentUser)
+      map((data: {currentUser?: any}) => data?.currentUser)
     );
+    console.log(this.currentUser$);
+
   }
 
   loadScrollData(event, totalItems: number) {
@@ -73,9 +77,14 @@ export class FeedsComponent implements OnInit {
       return;
     }else{
       const {base64String = null} = await this._camera.takePicture().catch(err => err);
-      console.log(base64String);
+      const up = {
+        ...currentUser,
+        profile_image: { medium: base64String}
+      };
+      this._auth.updateProfilPic(up);
     }
   }
+
   //voir docs track by
   trackByFn(index, item) {
     return index; // or item.id

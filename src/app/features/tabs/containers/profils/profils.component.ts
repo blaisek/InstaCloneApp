@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
@@ -6,7 +6,9 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-profils',
   templateUrl: './profils.component.html',
-  styleUrls: ['./profils.component.scss']
+  styleUrls: ['./profils.component.scss'],
+  encapsulation: ViewEncapsulation.None
+
 })
 export class ProfilsComponent implements OnInit {
 
@@ -18,7 +20,7 @@ export class ProfilsComponent implements OnInit {
 
   ngOnInit(): void {
     this.user$ = this._route.data.pipe(
-      map((respons: {curentUser?: any}) => respons?.curentUser)
+      map((response: {currentUser?: any}) => response?.currentUser)
     );
   }
 

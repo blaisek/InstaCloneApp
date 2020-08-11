@@ -20,7 +20,7 @@ const routes: Routes = [
         path: 'feeds',
         component: FeedsComponent,
         resolve: {
-          curentUser: CurrentUserResolverService
+          currentUser: CurrentUserResolverService
         }
       },
       {
@@ -36,7 +36,7 @@ const routes: Routes = [
 
             resolve: {
               item: ItemResolverService,
-              curentUser: CurrentUserResolverService
+              currentUser: CurrentUserResolverService
             }
           }
         ]
@@ -49,14 +49,14 @@ const routes: Routes = [
             component: ProfilsComponent,
             canActivate: [AuthGuardService],
             resolve: {
-              curentUser: CurrentUserResolverService
+              currentUser: CurrentUserResolverService
             }
           },
           {
             path: ':id',
             component: ProfilsComponent,
             resolve: {
-              curentUser: UserResolverService
+              currentUser: UserResolverService
             }
           }
         ]

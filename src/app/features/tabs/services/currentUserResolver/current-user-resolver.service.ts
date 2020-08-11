@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
+import { Resolve } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { first } from 'rxjs/operators';
 
@@ -14,7 +14,6 @@ export class CurrentUserResolverService implements Resolve<any> {
 
 
   resolve(
-    route: ActivatedRouteSnapshot
   ) {
 
     return this._auth.currentUser$.pipe(first());
